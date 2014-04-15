@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
       @canvas = @order.canvas.gsub(/{{user}}/, @variable)
     end
 
-    @cart = Cart.find(@order.cart)
+    @cart = Cart.find(@order.cart.to_s)
     @session_id = request.session_options[:id]
     if @session_id == @cart.session
       render layout: 'display'
@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @order = Order.find(params[:id])
-    @cart = Cart.find(@order.cart)
+    @cart = Cart.find(@order.cart.to_s)
     @session_id = request.session_options[:id]
     if @session_id == @cart.session
 
