@@ -1,0 +1,65 @@
+<div class="container" id="checkout-page">
+	<h2 style="font-family:'Lato'">Shopping cart</h2>
+	<div class="well">
+		<div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="120px"></th>
+            <th>Model</th>
+            <th>Quantity</th>
+            <th>Price / Case</th>
+            <th>Total</th>
+            <th width="80px"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+            	<td><%= link_to edit_order_path(order) do %>
+            		<div style="height:164px; width: 120px; overflow: hidden;"><iframe style="height:1400px; width:900px; zoom: 0.35; -webkit-transform:scale(0.35); margin-top:-470px; margin-left: -300px;" src="/orders/<%= order.id %>"></iframe></div>
+            		<% end %></td>
+            	<td><%= order.model %></td>
+            	<td><%= order.quantity %></td>
+            	<td><%= number_to_currency(order.price, options = {format: "%u%n", precision: 0}) %></td>
+            	<td><%= number_to_currency(order.quantity * order.price, options = {format: "%u%n", precision: 0})  %></td>
+            	<td>
+            		<%= link_to edit_order_path(order) do %>
+            			<span class="glyphicon glyphicon-pencil" style="margin-right: 10px;"></span>
+            		<% end %>
+            		<%= link_to order, method: :delete, data: { confirm: 'Are you sure?' }, :class => "flatred" do %>
+            			<span class="glyphicon glyphicon-remove"></span>
+            		<% end %>
+            	</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+	</div>
+
+	<h5 style="text-align:right">Shipping (4-6 days): <span style="text-decoration: line-through">$5.00</span> <span class="flatgreen">FREE</span><br></h5>
+	<h4 style="text-align:right">Total: <%= number_to_currency(@cart_total, options = {format: "%u%n", precision: 2}) %><br><br>
+	<%= form_tag charges_path do %>
+	  <script
+	    src="https://checkout.stripe.com/checkout.js"
+	    class="stripe-button"
+	    data-key="pk_test_QcvyHZ0UZEHJqCsbOtuHsGTc"
+	    data-image="/images/instacase_small.png"
+	    data-name="Order of <%= @cart_items %> Custom Case(s)"
+	    data-description='Total <%= number_to_currency(@cart_total, options = {format: "%u%n", precision: 2}) %>'
+	    data-amount="<%= @cart_total * 100 %>"
+	    data-shipping-address="true">
+	  </script>
+	<% end %></h4>
+	<hr>
+	<h4 style="text-align:right; font-family: 'Lato';" class="darkgray">We proudly accept <img style="height:auto; width: 200px;" src="/images/creditcards.jpg"/></h4>
+	
+	<br>
+	<br>
+	<br>
+	<br>>
+</div>
+

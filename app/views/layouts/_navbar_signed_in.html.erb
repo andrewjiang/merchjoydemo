@@ -1,0 +1,13 @@
+<ul class="nav navbar-nav navbar-right">
+  <li id="header-msg" style="margin-top:14px;">
+  	Hi<span><%= link_to edit_user_registration_path, :id => "header-name" do %><%= current_user.email%>!<% end %></span>
+	</li>
+	<li>
+	  <%= link_to destroy_user_session_path, :method => :delete, class: "dropdown-toggle CTA", id: "header-signout" do %>
+	    Log out
+	  <% end %>
+	  <ul class="dropdown-menu signed-out pull-right" role="menu">
+	  </ul> 
+	</li>
+	<li><a href="/carts/<%= @cart.id %>"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+</ul>

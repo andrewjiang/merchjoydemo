@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+	<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent" />
+  <script src="/js/fabric.js" ></script>
+  <script src="/js/detectmobile.js" ></script>
+  <script src="/spectrum/spectrum.js" ></script>
+  <script src="/bootstrap-select/bootstrap-select.js"></script>
+  <!--<script type="text/javascript" src="https://raw.githubusercontent.com/kangax/fabric.js/master/dist/fabric.js"></script>-->
+  <link rel="stylesheet" media="screen" type="text/css" href="/spectrum/spectrum.css" />
+  <link rel="stylesheet" media="screen" type="text/css" href="/bootstrap-select/bootstrap-select.css" />
+  <link rel="stylesheet" media="screen" type="text/css" href="/font-awesome-4.0.3/css/font-awesome.css" />
+	<title>CaseHappy</title>
+</head>
+<body>
+
+		<%= yield %>
+
+</body>
+</html>

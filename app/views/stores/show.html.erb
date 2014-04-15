@@ -1,0 +1,103 @@
+	<div id="store-profile-form">
+		<script language="javascript" type="text/javascript">
+		<!--
+		function popitup(url) {
+			newwindow=window.open(url,'name','height=500,width=380');
+			if (window.focus) {newwindow.focus()}
+			return false;
+		}
+
+		// -->
+		</script>
+		<br>
+		<div class="container">
+			<div class="well">
+				<div class="continer-fluid">
+					<div id="store-header">
+						<div class="row">
+							<div class="col-xs-12">
+								<img id="store-logo" src="<%= @store.logo %>" />
+
+								<span id="store-title"><span id="storeTitle"><%= @store.title %></span><span style="margin:5px; padding: 5px; font-size: 20px; " class="glyphicon glyphicon-pencil"></span></span>
+								<span id="store-sub">The Official Store</span>
+								<span id="store-url">https://<span id="storeName"><%= @store.name %></span>.merchjoy.com <span style="margin:2px; color:#ddd; border-radius: 1px; padding: 2px; font-size: 12px;" class="glyphicon glyphicon-pencil"></span></span>
+
+							</div>
+						</div>
+					</div>
+					<div id="choose-product-menu">
+						<div id="add-new-merch" style="background-color: #fafbfc; border: 2px dashed #eee;">
+							<h3 style="font-weight: 300; padding-left: 10px;">Add new merchandise</h3>
+							<div class="product small">
+								<a href="/choose">
+									<button><img src="/images/product-tshirt.png" /><span class="tag">T-shirt</span></button>
+								</a>
+							</div><div class="product small">
+								<a href="/choose">
+									<button><img src="/images/product-case.png" /><span class="tag">Phone Case</span></button>
+								</a>
+							</div><div class="product small">
+								<a href="/choose">
+									<button><img src="/images/product-poster.png" /><span class="tag">Poster</span></button>
+								</a>
+							</div><div class="product small">
+								<a href="/choose">
+									<button><img src="/images/product-mug.png" /><span class="tag">Mugs</span></button>
+								</a>
+							</div><div class="product small">
+								<a href="/choose">
+									<button><img src="/images/product-misc.png" style="visibility;"/><span class="tag">Others</span></button>
+								</a>
+							</div>
+
+						</div>
+						<div class="finished-product">
+
+							<table class="table">
+				        <thead>
+				          <tr>
+				            <th width="120px"></th>
+				            <th>Product SKU</th>
+								  	<th>Template Name</th>
+								  	<th>Base Price</th>
+								  	<th>URL</th>
+				            <th width="80px"></th>
+				          </tr>
+				        </thead>
+
+				        <tbody>
+				          <% @orders.each do |order| %>
+				            <tr>
+				            	<td style="position:relative" ><%= link_to edit_order_path(order) do %>
+				            		<div style="height:164px; width: 120px; overflow: hidden;"><iframe style="height:1400px; width:900px; zoom: 0.35; -webkit-transform:scale(0.35); margin-top:-470px; margin-left: -300px;" src="/orders/<%= order.id %>"></iframe></div>
+				            		<% end %><a href="/orders/<%= order.id %>" style="position:absolute; top:0; left:0; width:130px; height: 180px;" onclick="return popitup('/orders/<%= order.id %>')"></a></td>
+				            	<td><%= order.model %></td>
+				            	<td><%= order.name %></td>
+				            	<td><%= number_to_currency(order.quantity * order.price, options = {format: "%u%n", precision: 0})  %></td>
+				            	<td><a>https://<span id="storeName"><%= @store.name %></span>.merchjoy.com/<%= order.name.gsub(/ /,'-').downcase %></a></td>
+				            	<td>
+				            		<%= link_to edit_order_path(order) do %>
+				            			<span class="glyphicon glyphicon-pencil" style="margin-right: 10px;"></span>
+				            		<% end %>
+				            		<%= link_to order, method: :delete, data: { confirm: 'Are you sure?' }, :class => "flatred" do %>
+				            			<span class="glyphicon glyphicon-remove"></span>
+				            		<% end %>
+				            	</td>
+				            </tr>
+				          <% end %>
+				        </tbody>
+				      </table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+	</div>

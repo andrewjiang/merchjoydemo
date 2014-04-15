@@ -1,0 +1,66 @@
+	<div id="store-profile-form-mobile" style="position:relative">
+				<div class="continer-fluid" style="position:fixed; width: 100%; z-index:100000;">
+					<div id="store-header-mobile" style="border: 1px solid #000;">
+						<div class="row">
+							<div class="col-xs-12">
+								<img id="store-logo-mobile" src="<%= @store.logo %>" />
+
+								<span id="store-title-mobile"><span id="storeTitle"><%= @store.title %></span></span>
+								<span id="store-sub-mobile">The Official Store</span>
+								<div style="color:#eee; position:absolute; top:10px; right: 24px; font-size: 18px;">
+									<span id="store-shopping-cart" class="glyphicon glyphicon-shopping-cart" style="margin-right: 10px;"></span>
+									<span id="store-home" class="glyphicon glyphicon-home"></span>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+					<div id="choose-product-menu-mobile" style="padding-top: 80px;">
+					
+				          <% @orders.reverse.each do |order| %>
+				            		<div class="product-display" style="height:300px; width: 100%; overflow: hidden; background-color: #fff; position:relative;"><iframe style="height:2000px; width:2000px; zoom: 0.6; -webkit-transform:scale(0.6); margin-top:-400px; margin-left: -440px; border: transparent;" src="/orders/<%= order.id %>"></iframe>
+				            		<a href="/orders/<%= order.id %>" style="position:absolute; top:0; left:0; width:220px; height: 380px;" onclick="return popitup('/orders/<%= order.id %>')"></a>
+				            		<div style="position:absolute; top:0px; height:300px; width:180px; background-color:#fff; right: 0px; padding:10px;" >
+				            			<h4 style="color:#2c3e50"><%= order.name %></h4>
+				            			<h5 style="color:#34495e;; font-weight:300; font-style:italic;">L-O-V-E. For Clash fans that want to show their love right on the back of their phones.</h5>
+				            			<h6 class="darkgray"><%= order.model %> Phone Case
+				            				<ul style="font-size: 12px; font-weight: 200; padding-left: 20px; margin-top:4px;">
+				            					<li>3.96 x 6.17 in (w x h)
+				            					</li>
+				            					<li>Shatter-proof polycarbonate 
+				            					</li>
+				            					<li>Wrap-Around Printing™
+				            					</li>
+				            				</ul>
+				            			</h6>
+				            			<div class="price-tag">$20</div>
+
+				            		</div>
+				            	</div>
+
+				            		<div class="btn btn-lg btn-block btn-stripe" style="font-size: 20px;">Add to Cart</div>
+				            <!--tr>
+				            	<td style="position:relative" ><%= link_to edit_order_path(order) do %>
+				            		<div style="height:164px; width: 120px; overflow: hidden;"><iframe style="height:1400px; width:900px; zoom: 0.35; -webkit-transform:scale(0.35); margin-top:-470px; margin-left: -300px;" src="/orders/<%= order.id %>"></iframe></div>
+				            		<% end %><a href="/orders/<%= order.id %>" style="position:absolute; top:0; left:0; width:130px; height: 180px;" onclick="return popitup('/orders/<%= order.id %>')"></a></td>
+				            	<td><%= order.model %></td>
+				            	<td><%= order.name %></td>
+				            	<td><%= number_to_currency(order.quantity * order.price, options = {format: "%u%n", precision: 0})  %></td>
+				            	<td><a>https://<span id="storeName"><%= @store.name %></span>.merchjoy.com/<%= order.name.gsub(/ /,'-').downcase %></a></td>
+				            	<td>
+				            		<%= link_to edit_order_path(order) do %>
+				            			<span class="glyphicon glyphicon-pencil" style="margin-right: 10px;"></span>
+				            		<% end %>
+				            		<%= link_to order, method: :delete, data: { confirm: 'Are you sure?' }, :class => "flatred" do %>
+				            			<span class="glyphicon glyphicon-remove"></span>
+				            		<% end %>
+				            	</td>
+				            </tr-->
+				            <br>
+				            <br>
+				          <% end %>
+
+					</div>
+				</div>
+	</div>
